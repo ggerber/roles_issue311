@@ -1,0 +1,94 @@
+/**
+ * Clozer's Javascript linting configuration
+ *
+ * Documentation on rules can be found at:
+ * http://eslint.org/docs/rules/ <- Optionally append the rule name
+ */
+{
+  'parser': 'babel-eslint',
+  'parserOptions': {
+    'allowImportExportEverywhere': true
+  },
+  'plugins': [
+    'import',
+    'prettier'
+  ],
+  'extends': [
+    'airbnb',
+    'prettier'
+  ],
+  'env': {
+    'browser': true,
+    'node': true
+  },
+  'rules': {
+
+    // Require constructors to use initial caps
+    // http://eslint.org/docs/rules/new-cap
+    'new-cap': [2, {'capIsNewExceptions': ['Match', 'Match.ObjectIncluding']}],
+
+    // Disallow reassignment of function parameters, but allow modifying the properties of parameters
+    // http://eslint.org/docs/rules/no-param-reassign
+    'no-param-reassign': [2, {'props': false}],
+
+    // Put a blank space before line comments except at beginning of an object or block
+    // http://eslint.org/docs/rules/lines-around-comment
+    'lines-around-comment': [2, { 'beforeLineComment': true, 'allowObjectStart': true, 'allowBlockStart': true }],
+
+    // Allow dangling underscores
+    // http://eslint.org/docs/rules/no-underscore-dangle
+    'no-underscore-dangle': [0],
+
+    // Allow boolean casts
+    // http://eslint.org/docs/rules/no-extra-boolean-cast
+    'no-extra-boolean-cast': [0],
+
+    // Allow returning assignmenets
+    // http://eslint.org/docs/rules/no-return-assign
+    'no-return-assign': [0],
+
+    //
+    // React rules
+    //
+
+    // Allow files with .js extension to include jsx
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-filename-extension.md
+    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
+
+    // Don't enforce a defaultProps definition for every prop that is not a required prop
+    // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/require-default-props.md
+    'react/require-default-props': [0],
+
+    //
+    // Import rules
+    //
+
+    // Disallow namespace imports
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/no-namespace.md
+    'import/no-namespace': [2],
+
+    // Enforce a convention in module import order
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
+    'import/order': [2, {
+      'groups': [['builtin', 'external'], ['internal', 'parent', 'sibling', 'index']],
+      // 'newlines-between': 'always',
+    }],
+
+    // Require a newline after the last import/require in a group
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/newline-after-import.md
+    'import/newline-after-import': [2],
+
+    // Require modules with a single export to use a default export
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/prefer-default-export.md
+    'import/prefer-default-export': [2],
+
+    // Relax AirBNB import rules
+    'import/extensions': [0],
+    'import/no-absolute-path': [0],
+    'import/no-extraneous-dependencies': [0],
+    'import/no-named-as-default' : [0],
+    'import/no-unresolved': [0],
+
+    'prettier/prettier': ['error', {'bracketSpacing': false, 'printWidth': 120, 'singleQuote': true, 'tabWidth': 2}]
+  }
+}
